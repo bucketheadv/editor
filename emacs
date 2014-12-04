@@ -17,11 +17,11 @@
 ;;------语言环境字符集设置结束------------
 
 ;;--------------窗口界面设置------------------
-
-(set-foreground-color "grey")
-(set-background-color "black")
-(set-cursor-color "gold1")
-(set-mouse-color "gold1")
+;; 这里的设置已经在下面的启动设置里设置了
+;;(set-foreground-color "grey")
+;;(set-background-color "black")
+;;(set-cursor-color "gold1")
+;;(set-mouse-color "gold1")
 
 (set-scroll-bar-mode nil)
 ;;取消滚动栏
@@ -38,11 +38,11 @@
                (top . 25)
                (left . 45)
                (width . 120)
-               (height . 40)
+               (height . 35)
                (background-color . "black")
-               (foreground-color . "grey")
-               (cursor-color . "gold1")
-               (mouse-color . "gold1")
+               (foreground-color . "red")
+               (cursor-color . "white")
+               (mouse-color . "white")
                (tool-bar-lines . 0)
                (menu-bar-lines . 1)
                (right-fringe)
@@ -500,12 +500,12 @@
 
 
 ;;Erlang mode
-(setq load-path (cons "/usr/lib/erlang/lib/tools-2.6.13/emacs/" load-path))
-(setq erlang-root-dir "/usr/lib/erlang")
-(setq exec-path (cons "/usr/lib/erlang/bin" exec-path))
+(setq load-path (cons "/opt/erlang/lib/erlang/lib/tools-2.7/emacs/" load-path))
+(setq erlang-root-dir "/opt/erlang/lib/erlang")
+(setq exec-path (cons "/opt/erlang/lib/erlang/bin" exec-path))
 
-(setq erlang-root-dir "/usr/lib/erlang")
-(add-to-list 'exec-path "/usr/lib/erlang/bin")
+(setq erlang-root-dir "/opt/erlang/lib/erlang")
+(add-to-list 'exec-path "/opt/erlang/lib/erlang/bin")
 
 (require 'erlang-start)
 (require 'erlang-flymake) ;;这是一个Erlang的语法检查插件
@@ -546,6 +546,10 @@
 
 ;;yasnippet
 
+(add-to-list 'load-path
+             "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;;;以下是自定义插件auto-complete
@@ -586,7 +590,7 @@
 (define-key global-map "\C-c3" 'ecb-maximize-window-methods)
 (define-key global-map "\C-c4" 'ecb-maximize-window-history)
 ;;;; 恢复原始窗口布局
-(define-key global-map "\C-c`" 'ecb-restore-default-window-sizes)
+;(define-key global-map "\C-c`" 'ecb-restore-default-window-sizes)
 
 
 
@@ -604,6 +608,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ecb-layout-window-sizes nil)
+ '(ecb-options-version "2.40")
  '(markdown-command "pandoc -f markdown -t html -s --highlight-style espresso"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
